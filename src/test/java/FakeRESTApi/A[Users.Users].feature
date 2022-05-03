@@ -1,4 +1,4 @@
-Feature: Users
+Feature: List Users
 
   Background: 
     * url FAKERESTAPI
