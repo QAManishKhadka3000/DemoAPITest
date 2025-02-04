@@ -1,10 +1,10 @@
 package FakeRESTApi;
 
-import org.junit.runner.RunWith;
+import com.intuit.karate.junit5.Karate;
 
-import com.intuit.karate.junit4.Karate;
-
-@RunWith(Karate.class)
-public class WebV1Runner {
-
+class WebV1Runner {
+    @Karate.Test
+    Karate testAll() {
+        return Karate.run("classpath:features").relativeTo(getClass());
+    }
 }
