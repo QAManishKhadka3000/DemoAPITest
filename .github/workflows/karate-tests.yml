@@ -25,4 +25,4 @@ jobs:
         run: mvn install -DskipTests
 
       - name: Run Karate tests
-        run: mvn test
+        run: mvn test -Dtest=FakeRESTApi.WebV1Runner  # Explicitly run Karate test class
