@@ -1,9 +1,9 @@
 function fn() { 
   
   var config = {
-   JSONPLACEHOLDER : 'https://jsonplaceholder.typicode.com/',
+  JSONPLACEHOLDER : 'https://jsonplaceholder.typicode.com/',
   FAKERESTAPI : 'https://fakerestapi.azurewebsites.net/',
-   Author : 'QA Manish Khadka'
+  Author : 'QA Manish Khadka'
 	   
   } 
 
