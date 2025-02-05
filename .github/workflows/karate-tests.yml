@@ -25,7 +25,7 @@ jobs:
         run: mvn install -DskipTests
 
       - name: Set Environment Variables
-        run: echo "FAKERESTAPI=https://your-api-url.com" >> $GITHUB_ENV
+        run: echo "FAKERESTAPI=https://fakerestapi.azurewebsites.net/" >> $GITHUB_ENV
         # Alternatively, if using a GitHub Secret:
         # run: echo "FAKERESTAPI=${{ secrets.FAKERESTAPI }}" >> $GITHUB_ENV
 
