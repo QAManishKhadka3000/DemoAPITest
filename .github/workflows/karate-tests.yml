@@ -7,28 +7,34 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   karate-tests:
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
 
-      - name: Set up Java
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
-      - name: Install dependencies
-        run: mvn install -DskipTests
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
 
-      - name: Set environment variable for Karate
-        run: echo "FAKERESTAPI=https://fakerestapi.azurewebsites.net/" >> $GITHUB_ENV
+      - name: Run Karate Tests
+        run: mvn test
 
-      - name: Debug environment variables
-        run: echo "FAKERESTAPI=${{ env.FAKERESTAPI }}"
-
-      - name: Run Karate tests
-        run: mvn test -Dtest=FakeRESTApi.WebV1Runner -DFAKERESTAPI=${{ env.FAKERESTAPI }}
+      - name: Upload Karate Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: karate-reports
+          path: target/surefire-reports
