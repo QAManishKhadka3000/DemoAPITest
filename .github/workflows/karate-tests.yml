@@ -9,13 +9,13 @@ on:
       - main
 
 jobs:
-  run-karate-tests:
+  karate-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
+      - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -24,11 +24,11 @@ jobs:
       - name: Install dependencies
         run: mvn install -DskipTests
 
-      - name: Set Environment Variable for Karate
+      - name: Set environment variable for Karate
         run: echo "FAKERESTAPI=https://fakerestapi.azurewebsites.net/" >> $GITHUB_ENV
 
-      - name: Debug Environment Variables
-        run: echo "FAKERESTAPI=$FAKERESTAPI"
+      - name: Debug environment variables
+        run: echo "FAKERESTAPI=${{ env.FAKERESTAPI }}"
 
       - name: Run Karate tests
-        run: mvn test -Dtest=FakeRESTApi.WebV1Runner -DFAKERESTAPI=$FAKERESTAPI
+        run: mvn test -Dtest=FakeRESTApi.WebV1Runner -DFAKERESTAPI=${{ env.FAKERESTAPI }}

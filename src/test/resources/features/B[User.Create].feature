@@ -2,7 +2,7 @@ Feature: Create User
 
   Background: 
     * url FAKERESTAPI
-
+    
   Scenario: Create User
     Given path 'api/v1/Users'
     Then print 'The Author of this Script is: ' +Author
