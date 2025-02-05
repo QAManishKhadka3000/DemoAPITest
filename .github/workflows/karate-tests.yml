@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Karate Tests
         env:
-          FAKERESTAPI: "https://fakerestapi.azurewebsites.net/"  # ✅ Passing Base URL as Env Variable
+          FAKERESTAPI: "https://fakerestapi.azurewebsites.net/"  # Passing base URL as an environment variable
         run: mvn test
 
       - name: Upload Karate Test Reports
