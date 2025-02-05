@@ -1,7 +1,7 @@
 Feature: Single CoverPhoto
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Send GET request to List Single CoverPhoto 
     Given path 'api/v1/CoverPhotos/2'

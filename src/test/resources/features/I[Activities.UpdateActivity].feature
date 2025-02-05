@@ -1,7 +1,7 @@
 Feature: Update Activites 
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Update the Activities
     Given path 'api/v1/Activities/2'

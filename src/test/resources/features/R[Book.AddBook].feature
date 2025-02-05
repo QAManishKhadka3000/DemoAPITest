@@ -1,7 +1,7 @@
 Feature: Add Book
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Add the Book 
     Given path 'api/v1/Books'

@@ -1,7 +1,7 @@
 Feature: List Single Authors
 
   Background: 
-    * url FAKERESTAPI
+   * url karate.get('FAKERESTAPI')
 
   Scenario: List Single Author 
     Given path 'api/v1/Authors/2'

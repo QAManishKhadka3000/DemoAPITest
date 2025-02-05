@@ -1,7 +1,7 @@
 Feature: List Cover Photo by BookID
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Cover Photos
     Given path 'api/v1/CoverPhotos'

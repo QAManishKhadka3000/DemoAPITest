@@ -1,7 +1,7 @@
 Feature: Single User
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Send GET request to List Single user  
     Given path 'api/v1/Users/2'

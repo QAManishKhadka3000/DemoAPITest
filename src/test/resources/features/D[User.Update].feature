@@ -1,7 +1,7 @@
 Feature: Update User
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Update the User
     Given path 'api/v1/Users/2'

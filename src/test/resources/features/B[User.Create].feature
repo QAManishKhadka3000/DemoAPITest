@@ -1,8 +1,8 @@
 Feature: Create User
 
   Background: 
-    * url FAKERESTAPI
-    
+    * url karate.get('FAKERESTAPI')
+
   Scenario: Create User
     Given path 'api/v1/Users'
     Then print 'The Author of this Script is: ' +Author

@@ -1,7 +1,7 @@
 Feature: Activities
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: GET the Activites
     Given path 'api/v1/Activities'

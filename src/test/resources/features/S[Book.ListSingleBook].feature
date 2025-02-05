@@ -1,7 +1,7 @@
 Feature: Single Book
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Books
     Given path 'api/v1/Books'

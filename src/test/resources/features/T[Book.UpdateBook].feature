@@ -1,7 +1,7 @@
 Feature: Update Book
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Update the Book 
     Given path 'api/v1/Books/1'

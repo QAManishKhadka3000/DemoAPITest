@@ -1,7 +1,7 @@
 Feature: Delete Activities
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Delete the User
     Given path 'api/v1/Activities/2'

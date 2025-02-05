@@ -1,9 +1,9 @@
 Feature: List Users
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: GET the List of Users   
+  Scenario: GET the List of Users
     Given path 'api/v1/Users'
     Then print 'The Author of this Script is: ' +Author
     When method GET
@@ -25,4 +25,3 @@ Feature: List Users
     Then print 'The given ID is:\n' ,id
     Then print 'The given User Name is:\n' ,name
     Then print 'The given PassWord is:\n' ,pwd
-    

@@ -1,7 +1,7 @@
 Feature: Author By Book ID
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: First List Author and chain the idBook 
     Given path 'api/v1/Authors'

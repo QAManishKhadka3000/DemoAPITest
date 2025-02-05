@@ -1,7 +1,7 @@
 Feature: Update Cover Photo
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Update Cover Photo
     Given path 'api/v1/CoverPhotos/1'

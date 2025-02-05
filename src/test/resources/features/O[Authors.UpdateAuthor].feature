@@ -1,7 +1,7 @@
 Feature: Update Author
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario:  Authors   
     Given path 'api/v1/Authors'
