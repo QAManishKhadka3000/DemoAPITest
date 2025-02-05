@@ -1,11 +1,11 @@
 Feature: Cover Photos
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: List of Cover Photos
     Given path 'api/v1/CoverPhotos'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes

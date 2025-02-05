@@ -1,13 +1,12 @@
-Feature: Update Cover Photo
+Feature: Single CoverPhoto
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Update Cover Photo
-    Given path 'api/v1/CoverPhotos/1'
-    Then print 'The Author of this Script is: ' +Author
-    Given request { "id": 1,"idBook": 2, "url": "https://QAManish.com"}
-    When method PUT
+  Scenario: Send GET request to List Single CoverPhoto 
+    Given path 'api/v1/CoverPhotos/2'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    When method GET
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -18,11 +17,12 @@ Feature: Update Cover Photo
     Then print requestTimeStamp
     Then status 200
     Then match header Content-Type contains 'application/json'
-    * def CoverPhoto = response
-    Then print 'The Updated CoverPhoto details is :\n' ,CoverPhoto
+   * def CoverPhoto = response
+    Then print 'The CoverPhoto details is :\n' ,CoverPhoto
     * def id = CoverPhoto.id
     * def BookId = CoverPhoto.idBook
     * def URL = CoverPhoto.url
     Then print 'The Cover Photo ID is:\n' ,id
     Then print 'The Book Id is:\n' ,BookId
-    Then print 'The Cover photo URL is:\n' ,URL
+     Then print 'The Cover photo URL is:\n' ,URL
+    

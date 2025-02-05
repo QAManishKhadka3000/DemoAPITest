@@ -1,13 +1,13 @@
-Feature: Create User
+Feature: Update User
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Create User
-    Given path 'api/v1/Users'
-    Then print 'The Author of this Script is: ' +Author
-    Given request {"id": 0, "userName": "QA Manish", "password": "Manish1"}
-    When method POST
+  Scenario: Update the User
+    Given path 'api/v1/Users/2'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    Given request {"id": 2, "userName": "QA Manish", "password": "Manish1"}
+    When method PUT
     Then print response
     Then print responseBytes
     Then print responseStatus

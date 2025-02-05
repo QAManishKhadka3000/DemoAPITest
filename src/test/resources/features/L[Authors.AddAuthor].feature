@@ -1,11 +1,11 @@
 Feature: Add Author
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Add the Author 
     Given path 'api/v1/Authors'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0, "idBook": 3, "firstName": "QA", "lastName": "Manish"}
     When method POST
     Then print response

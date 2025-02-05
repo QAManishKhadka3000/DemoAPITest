@@ -1,11 +1,11 @@
 Feature: Add Book
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario: Add the Book 
     Given path 'api/v1/Books'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0,"title": "Story of My life","description": "The story of my life Begins and ends with you The names are still the same The story's still the truth I was alone You found me waiting and made me your own I was afraid That somehow I never could be The man that you wanted of me You are the story of my life And every word is true Each chapter sings your name Each page begins with you It's the story of our times And never letting go And if I die today I wanted you to know","pageCount": 120,"excerpt": "Life is all about the story of some life that we are living", "publishDate": "2022-05-03T10:31:23.4085556+00:00"}
     When method POST
     Then print response

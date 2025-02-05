@@ -1,12 +1,13 @@
-Feature: Single User
+Feature: Create User
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Send GET request to List Single user  
-    Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
-    When method GET
+  Scenario: Create User
+    Given path 'api/v1/Users'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    Given request {"id": 0, "userName": "QA Manish", "password": "Manish1"}
+    When method POST
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -25,4 +26,3 @@ Feature: Single User
     Then print 'The given ID is:\n' ,id
     Then print 'The given User Name is:\n' ,name
     Then print 'The given PassWord is:\n' ,pwd
-    

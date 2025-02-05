@@ -1,12 +1,13 @@
-Feature: Activities
+Feature: Add Activites 
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: GET the Activites
+  Scenario: Add the Activities
     Given path 'api/v1/Activities'
-    Then print 'The Author of this Script is: ' +Author
-    When method GET
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    Given request {"id": 0, "title": "QA incharge", "dueDate": "2022-05-02T04:16:58.692Z","completed": true}
+    When method POST
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -17,12 +18,12 @@ Feature: Activities
     Then print requestTimeStamp
     Then status 200
     Then match header Content-Type contains 'application/json'
-    * def Activities = response
-    Then print 'The user list are:\n' ,Activities
-    * def id = Activities[0].id
-    * def Title = Activities[0].title
-    * def DueDate = Activities[0].dueDate
-    * def Completed = Activities[0].completed
+    * def Activity = response
+    Then print 'The Activity is:\n' ,Activity
+    * def id = Activity.id
+    * def Title = Activity.title
+    * def DueDate = Activity.dueDate
+    * def Completed = Activity.completed
     Then print 'The given ID is:\n' ,id
     Then print 'The given Title is:\n' ,Title
     Then print 'The given DueDate is:\n' ,DueDate

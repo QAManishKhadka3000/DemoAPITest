@@ -1,11 +1,11 @@
-Feature: Delete User
+Feature: DELETE Cover Photo
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Delete the User
-    Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
+  Scenario: DELETE Cover Photo
+    Given path 'api/v1/CoverPhotos/1'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method DELETE
     Then print response
     Then print responseBytes

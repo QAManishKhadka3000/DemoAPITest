@@ -1,13 +1,12 @@
-Feature: Update Activites 
+Feature: Single Activities
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Update the Activities
+  Scenario: Send GET request to List Single user  
     Given path 'api/v1/Activities/2'
-    Then print 'The Author of this Script is: ' +Author
-    Given request {"id": 0, "title": "QA incharge", "dueDate": "2022-05-02T04:16:58.692Z","completed": true}
-    When method PUT
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    When method GET
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -18,6 +17,7 @@ Feature: Update Activites
     Then print requestTimeStamp
     Then status 200
     Then match header Content-Type contains 'application/json'
+   Then match header Content-Type contains 'application/json'
     * def Activity = response
     Then print 'The Activity is:\n' ,Activity
     * def id = Activity.id
@@ -28,3 +28,4 @@ Feature: Update Activites
     Then print 'The given Title is:\n' ,Title
     Then print 'The given DueDate is:\n' ,DueDate
     Then print 'Has completed ?:\n' ,Completed
+    

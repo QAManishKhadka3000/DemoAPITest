@@ -1,11 +1,11 @@
 Feature: Update Author
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
   Scenario:  Authors   
     Given path 'api/v1/Authors'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -30,7 +30,7 @@ Feature: Update Author
     #-------------------Chaining The API---------------------------------------------------------------------
      Given path 'api/v1/Authors'
      Given path id
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0, "idBook": 3, "firstName": "QA", "lastName": "Manish"}
     When method PUT
     Then print response

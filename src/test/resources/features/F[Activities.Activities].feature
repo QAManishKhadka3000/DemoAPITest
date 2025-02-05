@@ -1,11 +1,11 @@
-Feature: Single Activities
+Feature: Activities
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Send GET request to List Single user  
-    Given path 'api/v1/Activities/2'
-    Then print 'The Author of this Script is: ' +Author
+  Scenario: GET the Activites
+    Given path 'api/v1/Activities'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -17,15 +17,13 @@ Feature: Single Activities
     Then print requestTimeStamp
     Then status 200
     Then match header Content-Type contains 'application/json'
-   Then match header Content-Type contains 'application/json'
-    * def Activity = response
-    Then print 'The Activity is:\n' ,Activity
-    * def id = Activity.id
-    * def Title = Activity.title
-    * def DueDate = Activity.dueDate
-    * def Completed = Activity.completed
+    * def Activities = response
+    Then print 'The user list are:\n' ,Activities
+    * def id = Activities[0].id
+    * def Title = Activities[0].title
+    * def DueDate = Activities[0].dueDate
+    * def Completed = Activities[0].completed
     Then print 'The given ID is:\n' ,id
     Then print 'The given Title is:\n' ,Title
     Then print 'The given DueDate is:\n' ,DueDate
     Then print 'Has completed ?:\n' ,Completed
-    

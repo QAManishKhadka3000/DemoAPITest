@@ -1,11 +1,11 @@
-Feature: List Single Authors
+Feature: Authors
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: List Single Author 
-    Given path 'api/v1/Authors/2'
-    Then print 'The Author of this Script is: ' +Author
+  Scenario: List Authors   
+    Given path 'api/v1/Authors'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -17,13 +17,14 @@ Feature: List Single Authors
     Then print requestTimeStamp
     Then status 200
     Then match header Content-Type contains 'application/json'
-    * def Author = response
-    Then print 'The Author is:\n' ,Author
-    * def id = Author.id
-    * def Book = Author.idBook
-    * def FirstName = Author.firstName
-    * def LastName = Author.lastName
+    * def Authors = response
+    Then print 'The Authors are:\n' ,Authors
+    * def id = Authors[0].id
+    * def Book = Authors[0].idBook
+    * def FirstName = Authors[0].firstName
+    * def LastName = Authors[0].lastName
     Then print 'The given ID is:\n' ,id
     Then print 'The given Book is:\n' ,Book
     Then print 'The given First Name is:\n' ,FirstName
     Then print 'The given Last Name is:\n' ,LastName
+    

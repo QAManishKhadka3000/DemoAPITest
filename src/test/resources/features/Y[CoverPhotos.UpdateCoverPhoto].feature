@@ -1,13 +1,13 @@
-Feature: Add Cover Photo
+Feature: Update Cover Photo
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Add Cover Photo
-    Given path 'api/v1/CoverPhotos'
-    Then print 'The Author of this Script is: ' +Author
-    Given request { "id": 2,"idBook": 2, "url": "https://QAManishKhadka.com"}
-    When method POST
+  Scenario: Update Cover Photo
+    Given path 'api/v1/CoverPhotos/1'
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    Given request { "id": 1,"idBook": 2, "url": "https://QAManish.com"}
+    When method PUT
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -19,7 +19,7 @@ Feature: Add Cover Photo
     Then status 200
     Then match header Content-Type contains 'application/json'
     * def CoverPhoto = response
-    Then print 'The Added CoverPhoto details is :\n' ,CoverPhoto
+    Then print 'The Updated CoverPhoto details is :\n' ,CoverPhoto
     * def id = CoverPhoto.id
     * def BookId = CoverPhoto.idBook
     * def URL = CoverPhoto.url

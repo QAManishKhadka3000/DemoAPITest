@@ -13,32 +13,79 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<!-- Surefire Plugin for Running Tests -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.2</version>
+					<version>3.0.0</version>
+					<configuration>
+						<includes>
+							<include>**/*Runner.java</include>
+						</includes>
+					</configuration>
 				</plugin>
+
+				<!-- Failsafe Plugin for Integration Tests -->
 				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.7.7.201606060606</version>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>3.0.0-M7</version>
 					<executions>
 						<execution>
 							<goals>
-								<goal>prepare-agent</goal>
+								<goal>integration-test</goal>
+								<goal>verify</goal>
 							</goals>
 						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Karate Maven Plugin for Running Karate Tests -->
+				<plugin>
+					<groupId>com.intuit.karate</groupId>
+					<artifactId>karate-maven-plugin</artifactId>
+					<version>1.0.0</version> <!-- Ensure you use the latest
+					version -->
+					<executions>
 						<execution>
-							<id>report</id>
-							<phase>prepare-package</phase>
 							<goals>
-								<goal>report</goal>
+								<goal>test</goal>
 							</goals>
+							<configuration>
+								<report>true</report> <!-- Enable HTML report
+								generation -->
+								<outputFolder>
+									target/karate-reports/${maven.build.timestamp}</outputFolder> <!--
+								Set output folder for reports -->
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- This plugin will add timestamp for report folder -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<property name="maven.build.timestamp"
+										value="${maven.build.timestamp}" />
+									<echo
+										message="Timestamp: ${maven.build.timestamp}" />
+								</tasks>
+							</configuration>
 						</execution>
 					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+
 	</build>
 	<dependencies>
 		<dependency>
@@ -47,23 +94,24 @@
 			<version>5.3.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.intuit.karate/karate-archetype -->
-		<dependency>
-			<groupId>com.intuit.karate</groupId>
-			<artifactId>karate-archetype</artifactId>
-			<version>1.2.0.RC4</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.intuit.karate/karate-core -->
-		<dependency>
-			<groupId>com.intuit.karate</groupId>
-			<artifactId>karate-core</artifactId>
-			<version>1.2.0.RC4</version>
-		</dependency>
-
+		<!--
+		https://mvnrepository.com/artifact/com.intuit.karate/karate-archetype -->
 		<dependency>
 			<groupId>com.intuit.karate</groupId>
 			<artifactId>karate-junit4</artifactId>
+			<version>1.2.0</version> <!-- Make sure this is the latest version -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-core</artifactId>
+			<version>1.2.0</version> <!-- Ensure this matches the version above -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.intuit.karate</groupId>
+			<artifactId>karate-junit5</artifactId>
 			<version>1.1.0</version>
 			<scope>test</scope>
 		</dependency>

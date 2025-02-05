@@ -1,11 +1,11 @@
-Feature: Delete Book
+Feature: Books
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Books   
+  Scenario: GET the List of Books 
     Given path 'api/v1/Books'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -31,17 +31,3 @@ Feature: Delete Book
     Then print 'The Book Pagination is:\n' ,Pagination
     Then print 'The Book Excerpt is:\n' ,Excerpt
     Then print 'The Book Published Date is is:\n' ,PublishedDate
-    #-----------------------Delete Book---------------------------------------------------
-    Given path 'api/v1/Books'
-    And path id
-    Then print 'The Author of this Script is: ' +Author
-    When method DELETE
-    Then print response
-    Then print responseBytes
-    Then print responseStatus
-    Then print responseHeaders
-    Then print responseCookies
-    Then print responseTime
-    Then print responseType
-    Then print requestTimeStamp
-    Then status 200

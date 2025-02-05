@@ -1,13 +1,12 @@
-Feature: Update User
+Feature: Single User
 
   Background: 
-    * url FAKERESTAPI
+    * url karate.get('FAKERESTAPI')
 
-  Scenario: Update the User
+  Scenario: Send GET request to List Single user  
     Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
-    Given request {"id": 2, "userName": "QA Manish", "password": "Manish1"}
-    When method PUT
+    Then print 'The Author of this Script is: ' +karate.get('Author')
+    When method GET
     Then print response
     Then print responseBytes
     Then print responseStatus
@@ -26,3 +25,4 @@ Feature: Update User
     Then print 'The given ID is:\n' ,id
     Then print 'The given User Name is:\n' ,name
     Then print 'The given PassWord is:\n' ,pwd
+    

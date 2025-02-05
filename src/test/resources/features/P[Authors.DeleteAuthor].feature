@@ -1,11 +1,11 @@
 Feature: Delete Author
 
   Background: 
-    * url FAKERESTAPI
+   * url karate.get('FAKERESTAPI')
 
   Scenario: Authors   
     Given path 'api/v1/Authors'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -30,7 +30,7 @@ Feature: Delete Author
     #-----------------------Delete Author---------------------------------------------------
     Given path 'api/v1/Authors'
     And path id
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method DELETE
     Then print response
     Then print responseBytes
