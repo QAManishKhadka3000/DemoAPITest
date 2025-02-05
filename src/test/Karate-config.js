@@ -7,8 +7,6 @@ function fn() {
 	   
   } 
 
-
-
   karate.configure('connectTimeout', 50000);
   karate.configure('readTimeout', 50000);
 

@@ -24,13 +24,11 @@ jobs:
       - name: Install dependencies
         run: mvn install -DskipTests
 
-      - name: Set Environment Variables
-        run: echo "FAKERESTAPI=https://fakerestapi.azurewebsites.net/" >> $GITHUB_ENV
-        # Alternatively, if using a GitHub Secret:
-        # run: echo "FAKERESTAPI=${{ secrets.FAKERESTAPI }}" >> $GITHUB_ENV
+      - name: Extract FAKERESTAPI from karate-config.js
+        run: echo "FAKERESTAPI=$(node -p "require('./karate-config.js').FAKERESTAPI")" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
-        run: echo "FAKERESTAPI=${FAKERESTAPI}"
+        run: echo "FAKERESTAPI=$FAKERESTAPI"
 
       - name: Run Karate tests
-        run: mvn test -Dtest=FakeRESTApi.WebV1Runner  # Explicitly run Karate test class
+        run: mvn test -Dtest=FakeRESTApi.WebV1Runner -DFAKERESTAPI=$FAKERESTAPI
