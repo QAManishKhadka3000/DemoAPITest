@@ -5,7 +5,7 @@ Feature: Create User
 
   Scenario: Create User
     Given path 'api/v1/Users'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0, "userName": "QA Manish", "password": "Manish1"}
     When method POST
     Then print response

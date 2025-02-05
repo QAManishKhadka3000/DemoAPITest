@@ -5,7 +5,7 @@ Feature: Update Cover Photo
 
   Scenario: Update Cover Photo
     Given path 'api/v1/CoverPhotos/1'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request { "id": 1,"idBook": 2, "url": "https://QAManish.com"}
     When method PUT
     Then print response

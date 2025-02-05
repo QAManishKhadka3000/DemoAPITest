@@ -3,9 +3,9 @@ Feature: Author By Book ID
   Background: 
     * url karate.get('FAKERESTAPI')
 
-  Scenario: First List Author and chain the idBook 
+  Scenario: First List Author and chain the idBook
     Given path 'api/v1/Authors'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -30,6 +30,7 @@ Feature: Author By Book ID
     #-------------Chaining The API-------------------------------------------------------------
     Given path 'api/v1/Authors/authors/books'
     Given path Book
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -51,6 +52,3 @@ Feature: Author By Book ID
     Then print 'The given Book is:\n' ,Book
     Then print 'The given First Name is:\n' ,FirstName
     Then print 'The given Last Name is:\n' ,LastName
-    
-    
-    

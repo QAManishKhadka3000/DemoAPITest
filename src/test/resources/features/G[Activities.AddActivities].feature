@@ -5,7 +5,7 @@ Feature: Add Activites
 
   Scenario: Add the Activities
     Given path 'api/v1/Activities'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0, "title": "QA incharge", "dueDate": "2022-05-02T04:16:58.692Z","completed": true}
     When method POST
     Then print response

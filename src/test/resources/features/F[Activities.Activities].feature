@@ -5,7 +5,7 @@ Feature: Activities
 
   Scenario: GET the Activites
     Given path 'api/v1/Activities'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes

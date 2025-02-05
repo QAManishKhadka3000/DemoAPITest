@@ -5,7 +5,7 @@ Feature: Update User
 
   Scenario: Update the User
     Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 2, "userName": "QA Manish", "password": "Manish1"}
     When method PUT
     Then print response

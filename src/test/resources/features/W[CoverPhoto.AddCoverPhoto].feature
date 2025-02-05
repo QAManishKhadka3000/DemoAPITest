@@ -5,7 +5,7 @@ Feature: Add Cover Photo
 
   Scenario: Add Cover Photo
     Given path 'api/v1/CoverPhotos'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request { "id": 2,"idBook": 2, "url": "https://QAManishKhadka.com"}
     When method POST
     Then print response

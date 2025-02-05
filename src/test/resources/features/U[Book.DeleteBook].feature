@@ -5,7 +5,7 @@ Feature: Delete Book
 
   Scenario: Books   
     Given path 'api/v1/Books'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -34,7 +34,7 @@ Feature: Delete Book
     #-----------------------Delete Book---------------------------------------------------
     Given path 'api/v1/Books'
     And path id
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method DELETE
     Then print response
     Then print responseBytes

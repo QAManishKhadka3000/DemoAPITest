@@ -5,7 +5,7 @@ Feature: Single User
 
   Scenario: Send GET request to List Single user  
     Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes

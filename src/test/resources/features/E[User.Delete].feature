@@ -5,7 +5,7 @@ Feature: Delete User
 
   Scenario: Delete the User
     Given path 'api/v1/Users/2'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method DELETE
     Then print response
     Then print responseBytes

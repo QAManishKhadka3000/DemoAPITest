@@ -5,7 +5,7 @@ Feature: Single CoverPhoto
 
   Scenario: Send GET request to List Single CoverPhoto 
     Given path 'api/v1/CoverPhotos/2'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes

@@ -5,7 +5,7 @@ Feature: List Cover Photo by BookID
 
   Scenario: Cover Photos
     Given path 'api/v1/CoverPhotos'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes
@@ -28,7 +28,7 @@ Feature: List Cover Photo by BookID
     #------------------List Cover Photo by BookID-------------------------------------------
     Given path 'api/v1/CoverPhotos/books/covers'
     And path BookId
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     When method GET
     Then print response
     Then print responseBytes

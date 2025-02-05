@@ -5,7 +5,7 @@ Feature: Update Activites
 
   Scenario: Update the Activities
     Given path 'api/v1/Activities/2'
-    Then print 'The Author of this Script is: ' +Author
+    Then print 'The Author of this Script is: ' +karate.get('Author')
     Given request {"id": 0, "title": "QA incharge", "dueDate": "2022-05-02T04:16:58.692Z","completed": true}
     When method PUT
     Then print response
