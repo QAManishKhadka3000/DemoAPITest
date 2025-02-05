@@ -31,10 +31,12 @@ jobs:
           restore-keys: ${{ runner.os }}-maven-
 
       - name: Run Karate Tests
+        env:
+          FAKERESTAPI: "https://fakerestapi.azurewebsites.net/"  # ✅ Passing Base URL as Env Variable
         run: mvn test
 
       - name: Upload Karate Test Reports
-        uses: actions/upload-artifact@v4  # ✅ Updated to v4
+        uses: actions/upload-artifact@v4
         with:
           name: karate-reports
           path: target/surefire-reports
